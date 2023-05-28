@@ -1,7 +1,7 @@
-const Seasons = {
-	in_queue: "IN QUEUE",
-	processing: "PROCESSING",
-	finished: "FINISHED"
-}
+const Status = {
+  in_queue: 'IN QUEUE',
+  processing: 'PROCESSING',
+  finished: 'FINISHED',
+};
 
-module.exports = Seasons;
+module.exports = Status;

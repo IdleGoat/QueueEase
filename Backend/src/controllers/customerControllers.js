@@ -1,6 +1,5 @@
 const { pool } = require('../config/config');
-const {v4: uuidv4} = require('uuid');
-
+const { v4: uuidv4 } = require('uuid');
 
 const customerController = {
   createCustomer: async (req, res) => {
@@ -14,7 +13,7 @@ const customerController = {
         postal_code,
         bank_account_id,
       } = req.body;
-      
+
       const customer_id = uuidv4();
 
       const createCustomerQuery = `
@@ -42,7 +41,10 @@ const customerController = {
         bank_account_id,
       ];
 
-      const result = await pool.query(createCustomerQuery, createCustomerValues);
+      const result = await pool.query(
+        createCustomerQuery,
+        createCustomerValues
+      );
       const newCustomerId = result.rows[0].customer_id;
 
       res.status(201).json({ customer_id: newCustomerId });
@@ -68,7 +70,8 @@ const customerController = {
     try {
       const customerId = req.params.id;
 
-      const getCustomerByIdQuery = 'SELECT * FROM Customer WHERE customer_id = $1';
+      const getCustomerByIdQuery =
+        'SELECT * FROM Customer WHERE customer_id = $1';
       const result = await pool.query(getCustomerByIdQuery, [customerId]);
       const customer = result.rows[0];
 
@@ -119,7 +122,10 @@ const customerController = {
         customerId,
       ];
 
-      const result = await pool.query(updateCustomerQuery, updateCustomerValues);
+      const result = await pool.query(
+        updateCustomerQuery,
+        updateCustomerValues
+      );
 
       if (result.rowCount === 0) {
         return res.status(404).json({ message: 'Customer not found' });
