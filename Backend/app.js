@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const {testDatabaseConnection} = require('./src/config/config');
 const usersRoutes = require('./src/routes/usersRoutes');
+const customerRoutes = require('./src/routes/customerRoutes');
 
 const app = express();
 
@@ -11,6 +12,7 @@ app.use(bodyParser.json());
 
 // Routes
 app.use('/users', usersRoutes);
+app.use('/customers', customerRoutes);
 
 testDatabaseConnection();
 // Start the server
