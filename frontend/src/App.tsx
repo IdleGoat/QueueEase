@@ -1,10 +1,14 @@
-import Login from './components/login'
+import Login from './components/Login'
+import Navbar from './components/Navbar'
 
 
 function App() {
 
   return (
+    <>
+    <Navbar />
     <Login />
+    </>
   )
 }
 

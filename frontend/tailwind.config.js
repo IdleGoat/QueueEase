@@ -5,7 +5,11 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        'purple-primary': '#403B70',
+      }
+    },
   },
   // eslint-disable-next-line no-undef
   plugins: [require('daisyui')],
